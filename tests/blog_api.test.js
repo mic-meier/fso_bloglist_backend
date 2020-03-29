@@ -27,6 +27,14 @@ test("there are six blogs", async () => {
   expect(res.body.length).toBe(helper.initialBlogs.length);
 });
 
+test("unique identifier of blog posts is named id and not _id", async () => {
+  const res = await api.get("/api/blogs");
+
+  res.body.forEach(blog => {
+    expect(blog.id).toBeDefined();
+  });
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
