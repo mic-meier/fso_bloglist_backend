@@ -74,6 +74,30 @@ test("value of likes defaults to 0 if omitted in the POST request", async () => 
     });
 });
 
+test("returns status code 400 if blog title is missing from POST request", async () => {
+  const newBlog = {
+    author: "Dan Abramov",
+    url: "https://overreacted.io/what-are-the-react-team-principles/"
+  };
+
+  await api
+    .post("/api/blogs")
+    .send(newBlog)
+    .expect(400);
+});
+
+test("returns status code 400 if blog url is missing from POST request", async () => {
+  const newBlog = {
+    title: "What Are the React Team Principles?",
+    author: "Dan Abramov"
+  };
+
+  await api
+    .post("/api/blogs")
+    .send(newBlog)
+    .expect(400);
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
