@@ -15,7 +15,7 @@ describe("When there is an initial user in the database", () => {
     const user = new User({
       username: "root",
       name: "root",
-      passwordHash
+      passwordHash,
     });
 
     await user.save();
@@ -27,7 +27,7 @@ describe("When there is an initial user in the database", () => {
     const newUser = {
       username: "Batman",
       name: "Bruce Wayne",
-      password: "Selina"
+      password: "Selina",
     };
 
     await api
@@ -39,7 +39,7 @@ describe("When there is an initial user in the database", () => {
     const usersAtEnd = await helper.usersInDb();
     expect(usersAtEnd).toHaveLength(usersAtStart.length + 1);
 
-    const usernames = usersAtEnd.map(user => user.username);
+    const usernames = usersAtEnd.map((user) => user.username);
     expect(usernames).toContain(newUser.username);
   });
 
@@ -49,7 +49,7 @@ describe("When there is an initial user in the database", () => {
     const newUser = {
       username: "root",
       name: "root",
-      password: "rudebwoy"
+      password: "rudebwoy",
     };
 
     const result = await api
@@ -70,7 +70,7 @@ describe("When there is an initial user in the database", () => {
     const newUser = {
       username: "DD",
       name: "Dick Grayson",
-      password: "Batman"
+      password: "Batman",
     };
 
     const result = await api
@@ -93,7 +93,7 @@ describe("When there is an initial user in the database", () => {
     const newUser = {
       username: "Batman",
       name: "Bruce Wayne",
-      password: "SK"
+      password: "SK",
     };
 
     const result = await api
@@ -115,7 +115,7 @@ describe("When there is an initial user in the database", () => {
 
     const newUser = {
       name: "Bruce Wayne",
-      password: "Selina"
+      password: "Selina",
     };
 
     const result = await api
@@ -135,7 +135,7 @@ describe("When there is an initial user in the database", () => {
 
     const newUser = {
       username: "Batman",
-      name: "Bruce Wayne"
+      name: "Bruce Wayne",
     };
 
     const result = await api
